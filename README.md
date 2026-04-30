@@ -1,1 +1,1 @@
-Repository for Synapse_Deadline_Backend.
+Repository for Synapse_Deadline.
