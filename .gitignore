@@ -24,6 +24,7 @@ build/
 # Nunca suba senhas de banco de dados ou chaves de API de pagamento (Stripe, Mercado Pago)
 .env
 .env.*
+applications.properties
 application-local.yml
 application-local.properties
 application-secret.yml
