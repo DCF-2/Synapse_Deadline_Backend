@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,10 +24,11 @@ public class EmpresaServiceTest {
     @Mock
     private EmpresaRepository repository;
 
+    @Mock // <-- FIX: Essencial para o Spring não se perder ao rodar o teste
+    private PasswordEncoder passwordEncoder; 
+
     @InjectMocks
     private EmpresaService service;
-
-    private PasswordEncoder passwordEncoder; // <-- FIX: O teste precisa simular o BCrypt agora!
 
     @Test
     void deveCadastrarEmpresa() {
