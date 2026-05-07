@@ -1,83 +1,71 @@
-
 package com.synapse.deadline.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalTime;
 
 @Entity
+@Table(name = "tb_empresa")
 public class Empresa {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-private String nomeFantasia;
-private String razaoSocial;
-private String cnpj;
-private String logo;
+    private String nomeFantasia;
+    private String razaoSocial;
 
-private String endereco;
-private String coordenadasLocalizacao;
+    @Column(nullable = false, unique = true) // <-- FIX: Proteção no banco
+    private String cnpj;
 
-private String contatoWhatsapp;
-private String contato1;
-private String contato2;
+    private String logo;
+    private String endereco; 
+    private String coordenadasLocalizacao;
+    private String contatoWhatsapp;
+    private String contato1;
+    private String contato2;
 
-private String emailLogin;
-private String instrucoesRetirada;
-private String senha;
+    @Column(nullable = false, unique = true) // <-- FIX: Proteção no banco
+    private String emailLogin;
 
-private String diasFuncionamento;
-private LocalTime horarioAbertura;
-private LocalTime horarioFechamento;
+    @Column(nullable = false)
+    private String senha;
 
-/* getters e setters */
+    private String instrucoesRetirada;
+    private String diasFuncionamento;
+    private LocalTime horarioAbertura;
+    private LocalTime horarioFechamento;
 
-public Long getId(){return id;}
-
-public String getNomeFantasia(){return nomeFantasia;}
-public void setNomeFantasia(String v){this.nomeFantasia=v;}
-
-public String getRazaoSocial(){return razaoSocial;}
-public void setRazaoSocial(String v){this.razaoSocial=v;}
-
-public String getCnpj(){return cnpj;}
-public void setCnpj(String v){this.cnpj=v;}
-
-public String getLogo(){return logo;}
-public void setLogo(String v){this.logo=v;}
-
-public String getEndereco(){return endereco;}
-public void setEndereco(String v){this.endereco=v;}
-
-public String getCoordenadasLocalizacao(){return coordenadasLocalizacao;}
-public void setCoordenadasLocalizacao(String v){this.coordenadasLocalizacao=v;}
-
-public String getContatoWhatsapp(){return contatoWhatsapp;}
-public void setContatoWhatsapp(String v){this.contatoWhatsapp=v;}
-
-public String getContato1(){return contato1;}
-public void setContato1(String v){this.contato1=v;}
-
-public String getContato2(){return contato2;}
-public void setContato2(String v){this.contato2=v;}
-
-public String getEmailLogin(){return emailLogin;}
-public void setEmailLogin(String v){this.emailLogin=v;}
-
-public String getInstrucoesRetirada(){return instrucoesRetirada;}
-public void setInstrucoesRetirada(String v){this.instrucoesRetirada=v;}
-
-public String getSenha(){return senha;}
-public void setSenha(String v){this.senha=v;}
-
-public String getDiasFuncionamento(){return diasFuncionamento;}
-public void setDiasFuncionamento(String v){this.diasFuncionamento=v;}
-
-public LocalTime getHorarioAbertura(){return horarioAbertura;}
-public void setHorarioAbertura(LocalTime v){this.horarioAbertura=v;}
-
-public LocalTime getHorarioFechamento(){return horarioFechamento;}
-public void setHorarioFechamento(LocalTime v){this.horarioFechamento=v;}
-
+    // --- GETTERS E SETTERS ---
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNomeFantasia() { return nomeFantasia; }
+    public void setNomeFantasia(String nomeFantasia) { this.nomeFantasia = nomeFantasia; }
+    public String getRazaoSocial() { return razaoSocial; }
+    public void setRazaoSocial(String razaoSocial) { this.razaoSocial = razaoSocial; }
+    public String getCnpj() { return cnpj; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+    public String getLogo() { return logo; }
+    public void setLogo(String logo) { this.logo = logo; }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+    public String getCoordenadasLocalizacao() { return coordenadasLocalizacao; }
+    public void setCoordenadasLocalizacao(String coordenadasLocalizacao) { this.coordenadasLocalizacao = coordenadasLocalizacao; }
+    public String getContatoWhatsapp() { return contatoWhatsapp; }
+    public void setContatoWhatsapp(String contatoWhatsapp) { this.contatoWhatsapp = contatoWhatsapp; }
+    public String getContato1() { return contato1; }
+    public void setContato1(String contato1) { this.contato1 = contato1; }
+    public String getContato2() { return contato2; }
+    public void setContato2(String contato2) { this.contato2 = contato2; }
+    public String getEmailLogin() { return emailLogin; }
+    public void setEmailLogin(String emailLogin) { this.emailLogin = emailLogin; }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+    public String getInstrucoesRetirada() { return instrucoesRetirada; }
+    public void setInstrucoesRetirada(String instrucoesRetirada) { this.instrucoesRetirada = instrucoesRetirada; }
+    public String getDiasFuncionamento() { return diasFuncionamento; }
+    public void setDiasFuncionamento(String diasFuncionamento) { this.diasFuncionamento = diasFuncionamento; }
+    public LocalTime getHorarioAbertura() { return horarioAbertura; }
+    public void setHorarioAbertura(LocalTime horarioAbertura) { this.horarioAbertura = horarioAbertura; }
+    public LocalTime getHorarioFechamento() { return horarioFechamento; }
+    public void setHorarioFechamento(LocalTime horarioFechamento) { this.horarioFechamento = horarioFechamento; }
 }
