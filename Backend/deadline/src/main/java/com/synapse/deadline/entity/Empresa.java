@@ -4,22 +4,29 @@ import jakarta.persistence.*;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "tb_empresa")
+@Table(name = "empresa")
 public class Empresa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String nomeFantasia;
+
+    @Column(nullable = false)
     private String razaoSocial;
 
     @Column(nullable = false, unique = true) // <-- FIX: Proteção no banco
     private String cnpj;
 
     private String logo;
+
+    @Column(nullable = false)
     private String endereco; 
+
     private String coordenadasLocalizacao;
+
     private String contatoWhatsapp;
     private String contato1;
     private String contato2;
@@ -30,12 +37,20 @@ public class Empresa {
     @Column(nullable = false)
     private String senha;
 
+    @Column(nullable = false)
     private String instrucoesRetirada;
+
+    @Column(nullable = false)
     private String diasFuncionamento;
+
+    @Column(nullable = false)
     private LocalTime horarioAbertura;
+    
+    @Column(nullable = false)
     private LocalTime horarioFechamento;
 
     // --- GETTERS E SETTERS ---
+    // (Mantenha exatamente os mesmos que você já tinha feito)
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getNomeFantasia() { return nomeFantasia; }

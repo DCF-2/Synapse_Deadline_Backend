@@ -19,6 +19,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.time.LocalTime;
+
 @SpringBootTest
 @AutoConfigureMockMvc
 class AuthControllerTest {
@@ -37,16 +39,24 @@ class AuthControllerTest {
     // Roda ANTES de cada teste para preparar o banco
     @BeforeEach
     void setup() {
-        empresaRepository.deleteAll(); // Limpa o banco para não dar conflito
+        // Limpa o banco antes de cada teste para não dar erro de e-mail duplicado
+        empresaRepository.deleteAll(); 
 
-        Empresa farmaciaMock = new Empresa();
-        farmaciaMock.setEmailLogin("contato@farmacia.com");
-        farmaciaMock.setSenha(passwordEncoder.encode("Senha123"));
-        farmaciaMock.setNomeFantasia("Farmácia Mockada");
-        farmaciaMock.setRazaoSocial("Farmácia Mockada LTDA");
-        farmaciaMock.setCnpj("12.345.678/0001-99");
         
-        empresaRepository.save(farmaciaMock); // Salva no banco de teste!
+        Empresa empresa = new Empresa();
+        empresa.setNomeFantasia("Farmácia Teste");
+        empresa.setEmailLogin("contato@farmacia.com");
+        empresa.setSenha(passwordEncoder.encode("Senha123"));
+    
+        empresa.setRazaoSocial("Farmácia Teste LTDA");
+        empresa.setCnpj("12.345.678/0001-99");
+        empresa.setEndereco("Rua dos Testes, 123");
+        empresa.setInstrucoesRetirada("Retirar no balcão de testes");
+        empresa.setDiasFuncionamento("Segunda a Sexta");
+        empresa.setHorarioAbertura(LocalTime.of(8, 0));
+        empresa.setHorarioFechamento(LocalTime.of(18, 0));
+
+        empresaRepository.save(empresa);
     }
 
     @Test

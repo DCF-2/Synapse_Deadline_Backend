@@ -2,6 +2,7 @@ package com.synapse.deadline.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull; 
 import org.hibernate.validator.constraints.br.CNPJ;
 import java.time.LocalTime;
 
@@ -14,26 +15,34 @@ public class EmpresaCadastroDTO {
     private String razaoSocial;
 
     @NotBlank(message = "O CNPJ é obrigatório")
-    @CNPJ(message = "CNPJ inválido") // <-- FIX: Validador oficial de CNPJ
+    @CNPJ(message = "CNPJ inválido") 
     private String cnpj;
 
     @NotBlank(message = "O endereço é obrigatório")
     private String endereco;
 
     @NotBlank(message = "O e-mail é obrigatório")
-    @Email(message = "Formato de e-mail inválido") // <-- FIX: Validador de E-mail
+    @Email(message = "Formato de e-mail inválido")
     private String emailLogin;
 
     @NotBlank(message = "A senha é obrigatória")
     private String senha;
 
+    @NotBlank(message = "As instruções de retirada são obrigatórias")
+    private String instrucoesRetirada;
+
+    @NotBlank(message = "Os dias de funcionamento são obrigatórios")
+    private String diasFuncionamento;
+
+    @NotNull(message = "O horário de abertura é obrigatório") // <-- FIX: @NotNull
+    private LocalTime horarioAbertura;
+    
+    @NotNull(message = "O horário de fechamento é obrigatório") // <-- FIX: @NotNull
+    private LocalTime horarioFechamento;
+
     private String contatoWhatsapp;
     private String contato1;
     private String contato2;
-    private String instrucoesRetirada;
-    private String diasFuncionamento;
-    private LocalTime horarioAbertura;
-    private LocalTime horarioFechamento;
 
     // --- GETTERS E SETTERS ---
     public String getNomeFantasia() { return nomeFantasia; }
