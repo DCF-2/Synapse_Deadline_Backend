@@ -7,7 +7,8 @@ import java.util.Optional;
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
     
     Optional<Empresa> findByEmailLogin(String emailLogin);
-    
+
+    // Métodos para checar duplicidade
     boolean existsByEmailLogin(String emailLogin);
     boolean existsByCnpj(String cnpj);
 }

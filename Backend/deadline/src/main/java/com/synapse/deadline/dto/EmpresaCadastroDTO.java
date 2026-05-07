@@ -1,67 +1,65 @@
-
 package com.synapse.deadline.dto;
-import jakarta.validation.constraints.*;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.br.CNPJ;
 import java.time.LocalTime;
 
 public class EmpresaCadastroDTO {
 
-@NotBlank private String nomeFantasia;
-@NotBlank private String razaoSocial;
-@NotBlank private String cnpj;
+    @NotBlank(message = "O nome fantasia é obrigatório")
+    private String nomeFantasia;
 
-@NotBlank private String endereco;
-@NotBlank private String emailLogin;
-@NotBlank private String senha;
+    @NotBlank(message = "A razão social é obrigatória")
+    private String razaoSocial;
 
-private String contatoWhatsapp;
-private String contato1;
-private String contato2;
+    @NotBlank(message = "O CNPJ é obrigatório")
+    @CNPJ(message = "CNPJ inválido") // <-- FIX: Validador oficial de CNPJ
+    private String cnpj;
 
-private String instrucoesRetirada;
-private String diasFuncionamento;
+    @NotBlank(message = "O endereço é obrigatório")
+    private String endereco;
 
-private LocalTime horarioAbertura;
-private LocalTime horarioFechamento;
+    @NotBlank(message = "O e-mail é obrigatório")
+    @Email(message = "Formato de e-mail inválido") // <-- FIX: Validador de E-mail
+    private String emailLogin;
 
-/* getters setters */
+    @NotBlank(message = "A senha é obrigatória")
+    private String senha;
 
-public String getNomeFantasia(){return nomeFantasia;}
-public void setNomeFantasia(String v){this.nomeFantasia=v;}
+    private String contatoWhatsapp;
+    private String contato1;
+    private String contato2;
+    private String instrucoesRetirada;
+    private String diasFuncionamento;
+    private LocalTime horarioAbertura;
+    private LocalTime horarioFechamento;
 
-public String getRazaoSocial(){return razaoSocial;}
-public void setRazaoSocial(String v){this.razaoSocial=v;}
-
-public String getCnpj(){return cnpj;}
-public void setCnpj(String v){this.cnpj=v;}
-
-public String getEndereco(){return endereco;}
-public void setEndereco(String v){this.endereco=v;}
-
-public String getEmailLogin(){return emailLogin;}
-public void setEmailLogin(String v){this.emailLogin=v;}
-
-public String getSenha(){return senha;}
-public void setSenha(String v){this.senha=v;}
-
-public String getContatoWhatsapp(){return contatoWhatsapp;}
-public void setContatoWhatsapp(String v){this.contatoWhatsapp=v;}
-
-public String getContato1(){return contato1;}
-public void setContato1(String v){this.contato1=v;}
-
-public String getContato2(){return contato2;}
-public void setContato2(String v){this.contato2=v;}
-
-public String getInstrucoesRetirada(){return instrucoesRetirada;}
-public void setInstrucoesRetirada(String v){this.instrucoesRetirada=v;}
-
-public String getDiasFuncionamento(){return diasFuncionamento;}
-public void setDiasFuncionamento(String v){this.diasFuncionamento=v;}
-
-public LocalTime getHorarioAbertura(){return horarioAbertura;}
-public void setHorarioAbertura(LocalTime v){this.horarioAbertura=v;}
-
-public LocalTime getHorarioFechamento(){return horarioFechamento;}
-public void setHorarioFechamento(LocalTime v){this.horarioFechamento=v;}
-
+    // --- GETTERS E SETTERS ---
+    public String getNomeFantasia() { return nomeFantasia; }
+    public void setNomeFantasia(String nomeFantasia) { this.nomeFantasia = nomeFantasia; }
+    public String getRazaoSocial() { return razaoSocial; }
+    public void setRazaoSocial(String razaoSocial) { this.razaoSocial = razaoSocial; }
+    public String getCnpj() { return cnpj; }
+    public void setCnpj(String cnpj) { this.cnpj = cnpj; }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
+    public String getEmailLogin() { return emailLogin; }
+    public void setEmailLogin(String emailLogin) { this.emailLogin = emailLogin; }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+    public String getContatoWhatsapp() { return contatoWhatsapp; }
+    public void setContatoWhatsapp(String contatoWhatsapp) { this.contatoWhatsapp = contatoWhatsapp; }
+    public String getContato1() { return contato1; }
+    public void setContato1(String contato1) { this.contato1 = contato1; }
+    public String getContato2() { return contato2; }
+    public void setContato2(String contato2) { this.contato2 = contato2; }
+    public String getInstrucoesRetirada() { return instrucoesRetirada; }
+    public void setInstrucoesRetirada(String instrucoesRetirada) { this.instrucoesRetirada = instrucoesRetirada; }
+    public String getDiasFuncionamento() { return diasFuncionamento; }
+    public void setDiasFuncionamento(String diasFuncionamento) { this.diasFuncionamento = diasFuncionamento; }
+    public LocalTime getHorarioAbertura() { return horarioAbertura; }
+    public void setHorarioAbertura(LocalTime horarioAbertura) { this.horarioAbertura = horarioAbertura; }
+    public LocalTime getHorarioFechamento() { return horarioFechamento; }
+    public void setHorarioFechamento(LocalTime horarioFechamento) { this.horarioFechamento = horarioFechamento; }
 }
