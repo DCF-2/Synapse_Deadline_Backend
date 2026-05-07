@@ -1,9 +1,10 @@
 
-package com.example.demo.service;
+package com.synapse.deadline.service;
 
-import com.example.demo.dto.EmpresaCadastroDTO;
-import com.example.demo.entity.Empresa;
-import com.example.demo.repository.EmpresaRepository;
+import com.synapse.deadline.dto.EmpresaCadastroDTO;
+import com.synapse.deadline.entity.Empresa;
+import com.synapse.deadline.repository.EmpresaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

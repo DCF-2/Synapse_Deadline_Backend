@@ -1,9 +1,8 @@
-package com.example.demo;
+package com.synapse.deadline.service;
 
-import com.example.demo.dto.EmpresaCadastroDTO;
-import com.example.demo.entity.Empresa;
-import com.example.demo.repository.EmpresaRepository;
-import com.example.demo.service.EmpresaService;
+import com.synapse.deadline.dto.EmpresaCadastroDTO;
+import com.synapse.deadline.entity.Empresa;
+import com.synapse.deadline.repository.EmpresaRepository;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

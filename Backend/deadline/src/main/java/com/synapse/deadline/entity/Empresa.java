@@ -1,30 +1,39 @@
 
-package com.example.demo.dto;
+package com.synapse.deadline.entity;
 
-import jakarta.validation.constraints.*;
+import jakarta.persistence.*;
 import java.time.LocalTime;
 
-public class EmpresaCadastroDTO {
+@Entity
+public class Empresa {
 
-@NotBlank private String nomeFantasia;
-@NotBlank private String razaoSocial;
-@NotBlank private String cnpj;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
 
-@NotBlank private String endereco;
-@NotBlank private String emailLogin;
-@NotBlank private String senha;
+private String nomeFantasia;
+private String razaoSocial;
+private String cnpj;
+private String logo;
+
+private String endereco;
+private String coordenadasLocalizacao;
 
 private String contatoWhatsapp;
 private String contato1;
 private String contato2;
 
+private String emailLogin;
 private String instrucoesRetirada;
-private String diasFuncionamento;
+private String senha;
 
+private String diasFuncionamento;
 private LocalTime horarioAbertura;
 private LocalTime horarioFechamento;
 
-/* getters setters */
+/* getters e setters */
+
+public Long getId(){return id;}
 
 public String getNomeFantasia(){return nomeFantasia;}
 public void setNomeFantasia(String v){this.nomeFantasia=v;}
@@ -35,14 +44,14 @@ public void setRazaoSocial(String v){this.razaoSocial=v;}
 public String getCnpj(){return cnpj;}
 public void setCnpj(String v){this.cnpj=v;}
 
+public String getLogo(){return logo;}
+public void setLogo(String v){this.logo=v;}
+
 public String getEndereco(){return endereco;}
 public void setEndereco(String v){this.endereco=v;}
 
-public String getEmailLogin(){return emailLogin;}
-public void setEmailLogin(String v){this.emailLogin=v;}
-
-public String getSenha(){return senha;}
-public void setSenha(String v){this.senha=v;}
+public String getCoordenadasLocalizacao(){return coordenadasLocalizacao;}
+public void setCoordenadasLocalizacao(String v){this.coordenadasLocalizacao=v;}
 
 public String getContatoWhatsapp(){return contatoWhatsapp;}
 public void setContatoWhatsapp(String v){this.contatoWhatsapp=v;}
@@ -53,8 +62,14 @@ public void setContato1(String v){this.contato1=v;}
 public String getContato2(){return contato2;}
 public void setContato2(String v){this.contato2=v;}
 
+public String getEmailLogin(){return emailLogin;}
+public void setEmailLogin(String v){this.emailLogin=v;}
+
 public String getInstrucoesRetirada(){return instrucoesRetirada;}
 public void setInstrucoesRetirada(String v){this.instrucoesRetirada=v;}
+
+public String getSenha(){return senha;}
+public void setSenha(String v){this.senha=v;}
 
 public String getDiasFuncionamento(){return diasFuncionamento;}
 public void setDiasFuncionamento(String v){this.diasFuncionamento=v;}
