@@ -42,7 +42,9 @@ class AuthControllerTest {
         // Limpa o banco antes de cada teste para não dar erro de e-mail duplicado
         empresaRepository.deleteAll(); 
 
+        
         Empresa empresa = new Empresa();
+        empresa.setNomeFantasia("Farmácia Teste");
         empresa.setEmailLogin("contato@farmacia.com");
         empresa.setSenha(passwordEncoder.encode("Senha123"));
     
