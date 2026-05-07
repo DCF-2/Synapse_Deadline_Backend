@@ -4,6 +4,9 @@ import com.synapse.deadline.dto.EmpresaCadastroDTO;
 import com.synapse.deadline.dto.EmpresaResponseDTO;
 import com.synapse.deadline.entity.Empresa;
 import com.synapse.deadline.repository.EmpresaRepository;
+
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -49,5 +52,20 @@ public class EmpresaService {
 
         // <-- FIX: Retorna o DTO seguro
         return new EmpresaResponseDTO(salva.getId(), salva.getNomeFantasia(), salva.getCnpj(), salva.getEmailLogin());
+    }
+
+    public void recuperarSenha(String email) {
+    Empresa empresa = repository.findByEmailLogin(email)
+        .orElseThrow(() -> new RuntimeException("E-mail não encontrado"));
+
+    // Gera uma senha aleatória simples
+    String novaSenhaPlana = UUID.randomUUID().toString().substring(0, 8);
+    
+    // Atualiza no banco (criptografada)
+    empresa.setSenha(passwordEncoder.encode(novaSenhaPlana));
+    repository.save(empresa);
+
+    // TODO: Integrar com Spring Mail para enviar 'novaSenhaPlana' por e-mail
+    System.out.println("NOVA SENHA PARA " + email + ": " + novaSenhaPlana);
     }
 }
