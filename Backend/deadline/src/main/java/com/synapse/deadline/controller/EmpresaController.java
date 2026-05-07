@@ -1,9 +1,9 @@
 
-package com.example.demo.controller;
+package com.synapse.deadline.controller;
 
-import com.example.demo.dto.EmpresaCadastroDTO;
-import com.example.demo.entity.Empresa;
-import com.example.demo.service.EmpresaService;
+import com.synapse.deadline.dto.EmpresaCadastroDTO;
+import com.synapse.deadline.entity.Empresa;
+import com.synapse.deadline.service.EmpresaService;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
